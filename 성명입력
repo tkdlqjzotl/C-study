@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char names[10][20];
+    int i, Cn;
+
+    for (i = 0; i< 10;i++)
+    {
+        printf("%d, 성명? (입력종료:end) ", i + 1);
+
+        scanf("%s",&names[i]) ; 
+
+        if(!strcmp(names[i], "end"))  
+              break;
+    }
+    Cn = i;
+
+    printf("\n 입력된 성명 => \n ");
+
+    for (i = 0; i < Cn; i++) 
+    {
+       printf("%-10s,", names[i]);
+    }
+
+     printf("\n");
+
+                        return 0;
+}
