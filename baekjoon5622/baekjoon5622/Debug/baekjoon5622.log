@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\aprix\Desktop\workspace\coding_test_study\baekjoon5622\baekjoon5622\main.cpp(15,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\aprix\Desktop\workspace\coding_test_study\baekjoon5622\baekjoon5622\main.cpp(24,20): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  baekjoon5622.vcxproj -> C:\Users\aprix\Desktop\workspace\coding_test_study\baekjoon5622\Debug\baekjoon5622.exe
