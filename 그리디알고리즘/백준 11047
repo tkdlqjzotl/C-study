@@ -1,0 +1,36 @@
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+int main() {
+    int N,K,mincount,m,tempn,mod,result=0;
+    
+    cin>>N >>K;
+    tempn=N-1;
+    int M[N];
+    
+    for(int i=0;i<N;i++)
+    {
+        cin>>M[i];
+    }
+    
+    while(tempn>=0)
+    {
+        if(K/M[tempn])
+        {
+            m=K/M[tempn];
+            result+=m;
+            K= K - m * M[tempn];
+        }
+        tempn--;
+    }
+    
+    cout<<result;
+    
+    
+}
+
+/*
+처음에 푼 설탕문제 응용해서 생각했다 오름차순으로 마침 
+들어왓으니 큰거부터 나눈몫을빼주면서 작은 값으로 내려간다 큰값부터 없앳으니 자동으로 제일 작은 값이 되리라 생각햇따
+*/
