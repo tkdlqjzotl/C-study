@@ -1,0 +1,51 @@
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+
+typedef pair <int,int> P;
+vector<P> arr;
+bool comp(P a, P b)
+{
+if(a.second == b.second)
+    return a.first < b.first;
+else 
+    return a.second < b.second;
+}
+
+int main() {
+    int N,cnt,now;
+    
+    cin>>N ;
+    
+    int l,r;
+    for(int i=0;i<N;i++)
+    {
+        cin>>l>>r;
+        arr.push_back(make_pair(l,r));
+    }
+    sort(arr.begin(),arr.end(),comp);
+    
+    now = arr[0].second;
+    cnt=1;
+    //printf(arr.end());
+    
+    for(int i=1;i<N;i++)//arr.end()
+    {
+        if(now<=arr[i].first)
+        {
+            cnt++;
+            now=arr[i].second;
+        }
+        
+    }
+   
+   cout<<cnt<<'\n';
+   return 0;
+    
+}
+
+/* vector 사용법 typedef pair vector arr pushback makepair sort arr.begin() arr.end() arr[i].first arr[i].second
+등 다양한 문법사용 . 특히 arr.end()는 마지막 원소를 지칭한다곻 한다. 마지막 인덱스값인줄알고 포문에 넣엇다가 안돌아갔다.
+*/
