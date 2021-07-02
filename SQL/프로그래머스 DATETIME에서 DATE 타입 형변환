@@ -1,0 +1,7 @@
+https://programmers.co.kr/learn/courses/30/lessons/59414
+M하면 JULY 이런거나오고 m하면 07 나옴 D하면 22TH이런거나오고 d하면 22나옴 신기 Y하면 2012 y하면 12 
+
+-- 코드를 입력하세요
+SELECT ANIMAL_ID, NAME, DATE_FORMAT(DATETIME,'%Y-%m-%d') AS '날짜'
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
