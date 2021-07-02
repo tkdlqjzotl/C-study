@@ -1,1 +1,66 @@
+https://www.acmicpc.net/problem/1920
+15:10- 16:00 50분 
+이분탐색 비스무리하게는 만들엇지만 자꿀 위드아웃리터닝이떳음. 그래도 얼추 생각나는게잇어서닿행 
+여러 방법 https://blockdmask.tistory.com/166
+재귀 참고 https://minwoo2815.tistory.com/entry/%EB%B0%B1%EC%A4%80-1920%EB%B2%88-%EC%88%98%EC%B0%8D%EA%B8%B0-C-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
 
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+
+//typedef pair <int,int> P;
+//vector<P> arr;
+
+bool search(int a[], int b,int start,int aN) //처음엔 a,b만넣엇다가 start랑 an을 추가함
+{
+    if(start>aN) { return false;} //탈출조건을 처음에 설정못해줌
+    int begin,mid,end;
+    
+    begin= start;
+    end=aN;
+    mid=(start+end)/2; //이것도 처음에는 0+end로함 
+    
+    if(b==a[mid])
+       { return true;}
+    else if(b>a[mid])
+      {  return search(a,b,mid+1,end);}  //결정적이게 여기서 return을 안써주고 계속 search로 제출하니 안됏음 재귀함수는 그래야ㅕ한다
+    else //if(b<a[mid])
+      {  return search(a,b,start,mid-1);}
+}
+
+int main() {
+    int N;
+    
+    cin>>N;
+    int A[N];
+    for(int i=0;i<N;i++)
+    {
+        cin>>A[i];
+    }
+    
+    
+    sort(A,A+N); //sort용법익숙해지는중
+    
+    int M;
+    
+    cin>>M;
+    int B[M];
+    bool BisinA[M];
+    for(int i=0;i<M;i++)
+    {
+        cin>>B[i];
+        BisinA[i] = search(A, B[i],0,N);
+    }
+    
+    
+    for(int i=0;i<M;i++)
+    {
+        cout<<BisinA[i]<<'\n';
+    }
+    
+    
+    return 0;
+}
