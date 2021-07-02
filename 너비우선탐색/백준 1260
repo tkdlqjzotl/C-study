@@ -1,0 +1,91 @@
+https://www.acmicpc.net/problem/1260
+dfs와 bfs는 몰라서 처음부터보고풀엇다
+큐에 대해 배웟다
+참고코드 https://scarlettb.tistory.com/76
+개념 https://devuna.tistory.com/32
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+
+#include<queue> 
+using namespace std;
+#define MAX 1001
+
+int MAP[MAX][MAX];
+int visited[MAX];
+queue<int> q;
+
+void reset(int n)
+{
+    for(int i=1;i<=n;i++)
+    {
+        visited[i]=0;
+    }
+    
+}
+
+void DFS(int v,int n)
+{
+    visited[v]=1; cout<<v<<" ";
+    for(int i=1;i<=n;i++)
+    {
+        if(visited[i]==0&&MAP[v][i]==1)
+        {
+            DFS(i,n);
+        }
+    }
+}
+
+
+void BFS(int v,int n)
+{
+    visited[v]=1; q.push(v);cout<<v<<" ";
+    while(1)
+    {
+        if(!q.empty())
+        {
+            v=q.front();
+            q.pop();
+            
+            for(int w=1;w<=n;w++)
+            {
+                if(visited[w]==0&&MAP[v][w]==1)
+                {
+                    cout<<w<<" ";
+                    q.push(w);
+                    visited[w]=1;
+                }
+            }
+        }
+        else 
+            break;
+    }
+    
+}
+
+
+
+int main() {
+    int N,M,V;
+    cin>>N>>M>>V;
+    
+    for(int i=0;i<M;i++)
+    {
+        int a,b;
+        cin>>a>>b;
+        MAP[a][b]=1;
+        MAP[b][a]=1;
+    }
+    
+    
+    reset(N);
+    DFS(V,N);
+    
+    cout<<'\n';
+    
+    reset(N);
+    BFS(V,N);
+    
+    return 0;
+}
