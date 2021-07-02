@@ -1,0 +1,90 @@
+문제 https://www.acmicpc.net/problem/2667
+해설 https://rile1036.tistory.com/37
+처음에보고 bfs인줄 알앗다 초반10프로정도하고 손놧다 어렵다 cnt 정도생각햇다
+vector의개념 확림 dx dy  1 -1 0 0 이런거 저번에봣는데 잘 써먹어야겟다 x하고 y가 범위벗어나는것도체크해주고
+근데 입력받을댸 왜 이차원배열로 그대로받으면안되지?몰겟다
+- '0'은왜해준ㄴㄱ건지도모르겟다
+pushback size 등등 써먹을거많다 
+
+
+#include <iostream>
+#include <vector> 
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+#define MAX 25
+int N,house_cnt,MAP[MAX][MAX];
+bool visited[MAX][MAX];
+vector <int> vec;
+int dx[4] = {1,-1,0,0};
+int dy[4] = {0,0,1,-1};
+
+void DFS(int x, int y)
+{
+    visited[x][y]=true;
+    house_cnt++;
+ 
+    for(int i=0;i<4;i++)
+    {
+        int nx = x + dx[i];
+        int ny = y + dy[i];
+        if(nx<0||nx>=N||ny<0||ny>=N) continue;
+        if(visited[nx][ny]==false && MAP[nx][ny]==1)
+        {
+            DFS(nx,ny);
+        }
+    }
+    
+}
+
+
+int main()
+{
+    cin>>N;
+    /*
+    for(int i=0;i<N;i++)
+    {
+        for(int j=0;j<N;j++)
+        {
+           cin>> MAP[i][j];
+          // visited[i][j]=false;
+        }
+    } 
+    */
+    for (int i = 0; i < N; i++) {
+		string temp;
+		cin >> temp;
+		for (int j = 0; j < N; j++)	MAP[i][j] = temp[j] - '0';
+	}
+
+    
+    for(int i=0;i<N;i++)
+    {
+        for(int j=0;j<N;j++)
+        {
+            if(visited[i][j]==false && MAP[i][j]==1)
+            {
+                house_cnt=0;
+                DFS(i,j);
+                vec.push_back(house_cnt);
+            }
+        }
+    }
+    
+    
+    sort(vec.begin(),vec.end());
+    cout<<vec.size()<<'\n';//endl; //
+    
+    for(int i=0;i<vec.size();i++)
+    {
+        cout<<vec[i]<<'\n';//endl; //
+    }
+    return 0;
+    
+    
+}
