@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+int main() {
+    int N,m,M,mod,result;
+    
+    cin>> N;
+    
+    m = N/5;
+    
+    while(m>=0)
+    {
+        mod=0;
+        result=0;
+        
+        
+        if(m>0)
+        {
+            mod = N - m*5;
+            result=m;
+        }
+        else
+            mod = N;
+        
+        M = mod/3;
+        mod = mod%3;
+        result+=M;
+        
+        if(mod==0)
+        {
+            cout<<result;
+            break;
+        }
+        
+        m--;    
+    }
+    
+    if(m<0)
+    {
+        cout<<-1;
+        return 0;
+        
+    }
+}
+
+공부하고?외우고?직접써봄
+중간에 m mod 좀 틀렷지만 맞앗고
+마지막에 if문은 꼭써줘야 while문 탈출해도 -1을출력안하는듯
