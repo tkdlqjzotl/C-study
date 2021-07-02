@@ -1,0 +1,48 @@
+https://www.acmicpc.net/problem/2606
+
+bfs로 해결 bfs는할만하다 그치만 visit에서 for문의 인덱스 헷갈려서 좀 시간걸렷다. 그리고 문제잘못읽어서 1번도포함하는줄. 그래서 초기값을 -1
+로주엇다.
+
+#include <iostream>
+#include <vector> 
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <algorithm>
+#include <queue>
+using namespace std;
+
+int N,M,virusNum;
+    int map[101][101];
+    bool visit[101];
+void DFS(int v)
+{
+    virusNum++;
+    visit[v]=true;
+    for(int i=1;i<=N;i++)
+    {
+        if(visit[i]==false&&map[v][i]==1)
+        {
+            DFS(i);
+        }
+    }
+}
+int main()
+{
+    cin>>N>>M;
+    virusNum=-1;
+    
+    for(int i=1;i<=M;i++)
+    {
+        int a,b;
+        cin>>a>>b;
+        map[a][b]=1;
+        map[b][a]=1;
+    }
+    
+    int v=1;
+    DFS(v);
+    
+    cout<<virusNum<<endl;
+}
