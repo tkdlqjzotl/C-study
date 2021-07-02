@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector> 
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+   
+    int m;
+    reload: //레이블은 콜론(:)으로 끝내고, 일반적으로 들여쓰기를 하지 않는다.
+      scanf("%d",&m);
+      if(m==0)return 0;
+      printf("%d\n",m);
+      if(m!=0) 
+      {goto reload; }//reload라고 적혀있는 레이블로 실행 이동
+    
+}
