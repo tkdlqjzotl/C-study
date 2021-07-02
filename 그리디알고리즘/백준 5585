@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector> 
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+   
+    int n,i=0,mod,result=0;
+    int arr[6] = {500,100,50,10,5,1};
+    cin>>n;
+    
+    n=1000-n;
+    
+    while(n>0)
+    {
+        if(n/arr[i]>0)
+        {
+            mod=n/arr[i];
+            result+=mod;
+            n= n - arr[i] *  mod;
+        }
+        
+        i++;
+    }
+    cout<<result;
+
+}
