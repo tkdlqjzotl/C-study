@@ -1,6 +1,8 @@
 https://www.acmicpc.net/problem/1260
 dfs와 bfs는 몰라서 처음부터보고풀엇다
 큐에 대해 배웟다
+전역변수를 잘 이용해야겟다 다음에는
+for문안에 index값들의 차이를 알아둬야겟다 
 참고코드 https://scarlettb.tistory.com/76
 개념 https://devuna.tistory.com/32
 
