@@ -1,0 +1,48 @@
+그리디는항상 잔돈바꿔주는것만나오는줄알앗는데
+아니엿다 전혀생각도못한거다
+근데 이건정해지지않은수식이니 머리를잘써야겟다 
+minus bool사용법이나 temp를통해 문자열을 숫자로바꾸기 기억해두자
+
+#include <iostream>
+#include <vector> 
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <algorithm>
+
+using namespace std;
+string str;
+int result;
+int minResult(void)
+{
+    bool minus =false;
+    result =0;
+    string temp = "";
+    
+    for(int i=0;i<=str.size();i++)
+    {
+        if(str[i]=='-'||str[i]=='+'||str[i]=='\0')
+        {
+            if(minus)
+                result-=stoi(temp);
+            else
+                result+=stoi(temp);
+            temp="";
+            
+            if(str[i]=='-')
+                minus=true;
+            continue;
+        }
+        temp+=str[i];
+    }
+    
+    return result;
+    
+}
+int main()
+{
+   cin>>str;
+   
+   cout<<minResult()<<endl;
+}
